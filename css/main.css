@@ -1,0 +1,554 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    background-image: linear-gradient(45deg, #2fbdff, #ff7582);
+}
+img{
+    border-radius: 30%;
+}
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+i {
+    font-weight: bold !important;
+}
+
+.fs-0 {
+    font-size: 4rem;
+}
+
+.fs-7 {
+    font-size: 0.8rem;
+}
+
+/*Giups cho hinh anh(img) tren web responsive*/
+img {
+    max-width: 100%;
+    width: 100%;
+}
+
+.container {
+    max-width: 1200px;
+    /* do rong toi da la 1200px (ko the lon hon 1200px*/
+    width: 100%;
+    /* giup responsive */
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+a {
+    font-weight: bold;
+}
+
+button {
+    text-align: center;
+    color: white;
+    background: var(--color-grey);
+    padding: 0.8rem 2.5rem;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+button:hover {
+    background: var(--color-green-l);
+}
+
+:root {
+    --color-green: #131414;
+    --color-green-l: #a4cec0fb;
+    --color-grey: #060607;
+
+    --transition: all 0.3s ease-in;
+}
+
+/* OVERLAY  */
+
+#overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 11;
+    display: none;
+}
+
+#overlay.show {
+    display: initial;
+}
+
+/* ======header======== */
+header {
+    position: absolute;
+    width: 100%;
+}
+p{
+    font-weight: 700!important;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+/* @media(min-width:992px) {
+    .navbar {
+        width: 100vw;
+        position: fixed;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+    }
+} */
+
+/* logo  */
+.navbar__logo img {
+    width: 57px;
+    height: 57px;
+    object-fit: cover;
+    /*thuộc tính giúp hình ảnh lúc nào cũng cover(Che phủ) trong kích thước mình đặt ra*/
+}
+
+.navbar__links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 100%;
+    background-color: var(--color-grey);
+    z-index: 5;
+    transition: var(--transition);
+    transform: translateX(-100%);
+    /* nằm ẩn về phía bên trái màn hình*/
+
+    opacity: 0;
+    /*Độ mờ*/
+}
+
+.navbar__links.navbar__open {
+    transform: translateX(0);
+    opacity: 1;
+    transition: var(--transition);
+}
+
+.navbar__link {
+    list-style: none;
+    margin: 30px;
+    padding: 5px 10px;
+   
+}
+
+.navbar__link a {
+    text-decoration: none;
+    font-weight: bold;
+    transition: var(--transition);
+}
+
+.navbar__link a:hover {
+    color: var(--color-green);
+    transition: var(--transition);
+}
+
+.navbar__btn {
+    font-size: 1rem;
+    background: var(--color-green);
+    margin-left: 45px;
+}
+
+/* menubutton */
+
+.navbar__icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    width: 80px;
+    cursor: pointer;
+    transition: var(--transition);
+    z-index: 6;
+}
+
+.navbar__icon {
+    width: 45px;
+    height: 6px;
+    background: var(--color-grey);
+    border-radius: 5px;
+    transition: var(--transition);
+    position: relative;
+}
+
+.navbar__icon::before,
+.navbar__icon::after {
+    content: '';
+    /*khoong chua noi dung gi */
+    position: absolute;
+    width: 45px;
+    height: 6px;
+    background: var(--color-grey);
+    border-radius: 5px;
+    transition: var(--transition);
+}
+
+.navbar__icon::before {
+    transform: translateY(-12px);
+}
+
+.navbar__icon::after {
+    transform: translateY(12px);
+}
+
+/* button animation */
+.open .navbar__icon {
+    transform: translateX(-50px);
+    /*di chuyen theo chieu doc -50px(qua ben trai)*/
+    background: transparent;
+    /*tao background (mau nen) trong */
+}
+
+/*gach tren*/
+.open .navbar__icon::before {
+    transform: rotate(45deg) translate(35px, -35px);
+    /*quay 45deg, truc X: 35px, truc Y:-35px*/
+
+}
+
+/*gach duoi */
+.open .navbar__icon::after {
+    transform: rotate(-45deg) translate(35px, 35px);
+    /*quay -45deg, truc X: 35px, truc Y:35px*/
+}
+
+/*man hinh desktop(css cho kich thuoc lon hon 992px) */
+@media (min-width:992px) {
+    .navbar__links {
+        position: initial;
+        /*kieu hien thi ban dau*/
+        transform: translateX(0);
+        opacity: 1;
+        background-color: transparent;
+        /*mau ne trong suot*/
+        display: flex;
+        justify-content: flex-end;
+        /*day tat ca phan tu qua phia ben trai*/
+        align-items: center;
+    }
+
+    .navbar__link a {
+        color: var(--color-grey);
+    }
+
+    .navbar__icons {
+        display: none;
+    }
+
+    .navbar__btn {
+        background: var(--color-grey);
+    }
+}
+
+/* Banner */
+#banner {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.banner__img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+}
+
+.banner__heading {
+    max-width: 300px;
+    margin: 0 auto;
+    text-align: center;
+    color: var(--color-grey);
+}
+
+.banner__heading h1 {
+    font-size: 2.25rem;
+    padding-top: 4em;
+    margin-bottom: 0.8em;
+}
+
+.banner__heading p {
+    font-weight: 300;
+    line-height: 2em;
+    margin-bottom: 1.5em;
+}
+
+.banner__btn {
+    font-size: 1rem;
+}
+
+.banner__socials {
+    margin-top: 3em;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+}
+
+.banner__socials a {
+    color: var(--color-grey);
+    transition: var(--transition);
+}
+
+.banner__socials a:hover {
+    color: var(--color-green-l);
+}
+
+/*man hinh desktop (css cho kich thuoc lon hon 992px */
+@media(min-width: 992px) {
+    .banner__heading {
+        text-align: initial;
+        margin: 0;
+        padding-top: 0;
+    }
+
+    .banner__socials {
+        justify-content: flex-start;
+    }
+
+    .banner__socials a {
+        margin-right: 45px;
+    }
+
+    .banner__img {
+        width: 60%;
+    }
+}
+
+/* THINGS */
+#things {
+    position: relative;
+    overflow-x: hidden;
+    margin-top: 15em;
+}
+
+#things h2 {
+    text-align: center;
+    color: var(--color-grey);
+    margin-bottom: 3em;
+}
+
+.things__dec {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(-60%);
+    z-index: -1;
+}
+
+.things__dec:nth-child(2) {
+    top: initial;
+    left: initial;
+    bottom: 15%;
+    right: 0;
+    transform: translateX(60%);
+    z-index: -1;
+}
+
+.things__item {
+    margin: 3em 0;
+}
+
+.things__item img {
+    padding-bottom: 4em;
+}
+
+.things__item--heading {
+    text-align: center;
+    color: var(--color-grey);
+}
+
+.things__item--heading p {
+    font-weight: 300;
+    line-height: 2em;
+    max-width: 300px;
+    margin: 0 auto;
+    padding-top: 1em;
+}
+
+@media(min-width:992px) {
+    .things__item {
+        display: flex;
+        gap: 7rem;
+        align-items: center;
+        margin: 0;
+    }
+
+    .things__item img {
+        width: 40%;
+        padding-bottom: 0;
+    }
+
+    .things__item--heading {
+        width: 45%;
+        text-align: initial;
+    }
+
+    .things__item--heading p {
+        max-width: 500px;
+        margin: 0;
+    }
+
+    .things__item:nth-child(odd) img {
+        order: 2;
+        width: 40%;
+        padding-bottom: 0;
+    }
+
+    .things__item--heading:nth-child(odd) {
+        order: 1;
+        width: 45%;
+        text-align: initial;
+    }
+}
+
+/* WORK  */
+#work {
+    padding-top: 10em;
+    position: relative;
+    overflow-x: hidden;
+}
+
+#work h2 {
+    text-align: center;
+    color: var(--color-grey);
+}
+
+.work__dec_1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(-60%);
+}
+
+.work__dec_2 {
+    position: absolute;
+    bottom: 15%;
+    right: 0;
+    transform: translateX(60%);
+}
+
+.work__img--single {
+    margin: 2em 0;
+}
+
+.work__img--single:nth-child(odd) {
+    padding-top: 5em;
+}
+
+.work__img--single:nth-child(3) {
+    margin-top: -5em;
+}
+
+.work__btn {
+    text-align: center;
+    margin-top: 8em;
+}
+
+.work__btn button {
+    font-size: 1rem;
+}
+
+@media(min-width:992px) {
+    #work h2 {
+        margin-bottom: 3em;
+    }
+
+    .work__img {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .work__img--single {
+        margin: 0 5em;
+        width: 32%;
+    }
+
+    /*chon phan tu work__img--single thu 3*/
+    .work__img--single:nth-child(3) {
+        margin-top: 0;
+    }
+}
+
+/* FOOTER  */
+
+#footer {
+    overflow: hidden;
+    position: relative;
+    height: 85vh;
+    display: flex;
+    align-items: center;
+}
+
+.footer__dec {
+    position: absolute;
+    bottom: 15%;
+    left: 0;
+    transform: translateX(-60%);
+}
+
+.footer__img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    transform: translateX(0);
+    z-index: -1;
+}
+
+.footer__heading {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    color: var(--color-grey);
+}
+
+.footer__contact {
+    margin-top: 2em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer__contact a {
+    text-decoration: none;
+    color: var(--color-grey);
+}
+
+@media(min-width:992px) {
+    .footer__img {
+        bottom: 15%;
+        right: 0;
+        transform: translateX(0);
+        width: 60%;
+    }
+
+    .footer__heading {
+        text-align: inherit;
+        margin: 0;
+    }
+
+    .footer__contact {
+        display: flex;
+        justify-content: space-between;
+    }
+}
